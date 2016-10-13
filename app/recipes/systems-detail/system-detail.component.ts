@@ -4,14 +4,14 @@ import { Subscription } from "rxjs/Rx";
 
 import { Recipe } from "../recipe";
 import { ShoppingListService } from "../../shopping-list";
-import { RecipeService } from "../recipe.service";
+import { SystemService} from "../system.service";
 
 @Component({
 
   selector: 'rb-recipe-detail',
-  templateUrl: 'recipe-detail.component.html'
+  templateUrl: 'system-detail.component.html'
 })
-export class RecipeDetailComponent implements OnInit, OnDestroy {
+export class SystemDetailComponent implements OnInit, OnDestroy {
   selectedRecipe: Recipe;
   private recipeIndex: number;
   private subscription: Subscription;
@@ -19,13 +19,13 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   constructor(private sls: ShoppingListService,
               private router: Router,
               private route: ActivatedRoute,
-              private recipesService: RecipeService) {}
+              private systemService: SystemService) {}
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       (params: any) => {
         this.recipeIndex = params['id'];
-        this.selectedRecipe = this.recipesService.getRecipe(this.recipeIndex);
+        this.selectedRecipe = this.systemService.getRecipe(this.recipeIndex);
       }
     );
   }
@@ -35,7 +35,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.recipesService.deleteRecipe(this.selectedRecipe);
+    this.systemService.deleteRecipe(this.selectedRecipe);
     this.router.navigate(['/systems']);
   }
 

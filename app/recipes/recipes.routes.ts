@@ -1,12 +1,12 @@
 import { Routes } from "@angular/router";
 
-import { RecipeStartComponent } from "./recipe-start.component";
-import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
-import { RecipeEditComponent } from "./recipe-edit";
+import { SystemStartComponent } from "./system-start.component";
+import { SystemDetailComponent } from "./systems-detail/system-detail.component";
+import { SystemEditComponent } from "./systems-edit/system-edit.component";
 
 export const RECIPE_ROUTES: Routes = [
-  { path: '', component: RecipeStartComponent },
-  { path: 'new', component: RecipeEditComponent },
-  { path: ':id', component: RecipeDetailComponent },
-  { path: ':id/edit', component: RecipeEditComponent }
+  { path: '', component: SystemStartComponent },
+  { path: 'new', component: SystemEditComponent },
+  { path: ':id', component: SystemDetailComponent },
+  { path: ':id/edit', component: SystemEditComponent }
 ];

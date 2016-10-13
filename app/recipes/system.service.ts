@@ -6,7 +6,7 @@ import { Recipe } from "./recipe";
 import { Ingredient } from "../shared";
 
 @Injectable()
-export class RecipeService {
+export class SystemService {
   recipesChanged = new EventEmitter<Recipe[]>();
   
   private recipes: Recipe[] = [

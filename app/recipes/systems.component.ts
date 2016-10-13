@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'rb-recipes',
-  templateUrl: 'recipes.component.html'
+  templateUrl: 'systems.component.html'
 })
-export class RecipesComponent{
+export class SystemsComponent{
 }

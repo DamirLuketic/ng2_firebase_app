@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { RecipeService } from "./recipes/recipe.service";
+import { SystemService } from "./recipes/system.service";
 
 @Component({
   selector: 'rb-header',
@@ -8,17 +8,17 @@ import { RecipeService } from "./recipes/recipe.service";
 })
 export class HeaderComponent {
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private systemService: SystemService) {}
 
   onStore() {
-    this.recipeService.storeData().subscribe(
+    this.systemService.storeData().subscribe(
       data => console.log(data),
       error => console.error(error)
     );
   }
 
   onFetch() {
-    this.recipeService.fetchData();
+    this.systemService.fetchData();
   }
 
 }

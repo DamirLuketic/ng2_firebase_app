@@ -9,15 +9,15 @@ import {
   FormBuilder
 } from "@angular/forms";
 
-import { RecipeService } from "../recipe.service";
 import { Recipe } from "../recipe";
+import {SystemService} from "../system.service";
 
 @Component({
   selector: 'rb-recipe-edit',
-  templateUrl: 'recipe-edit.component.html',
+  templateUrl: 'system-edit.component.html',
   styles: []
 })
-export class RecipeEditComponent implements OnInit, OnDestroy {
+export class SystemEditComponent implements OnInit, OnDestroy {
   recipeForm: FormGroup;
   private recipeIndex: number;
   private recipe: Recipe;
@@ -25,7 +25,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService,
+              private systemService: SystemService,
               private formBuilder: FormBuilder,
               private router: Router) {}
 
@@ -35,7 +35,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         if (params.hasOwnProperty('id')) {
           this.isNew = false;
           this.recipeIndex = +params['id'];
-          this.recipe = this.recipeService.getRecipe(this.recipeIndex);
+          this.recipe = this.systemService.getRecipe(this.recipeIndex);
         } else {
           this.isNew = true;
           this.recipe = null;
@@ -48,9 +48,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   onSubmit() {
     const newRecipe = this.recipeForm.value;
     if (this.isNew) {
-      this.recipeService.addRecipe(newRecipe);
+      this.systemService.addRecipe(newRecipe);
     } else {
-      this.recipeService.editRecipe(this.recipe, newRecipe);
+      this.systemService.editRecipe(this.recipe, newRecipe);
     }
     this.navigateBack();
   }
